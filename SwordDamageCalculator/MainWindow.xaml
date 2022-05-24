@@ -16,9 +16,9 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <CheckBox x:Name="flaming" Content="Płonący" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <CheckBox x:Name="magic" Grid.Column="1" Content="Magiczny" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Button x:Name="rollButton" Content="Wykonaj rzut" Margin="10,15,10,15" Grid.Row="1" Grid.ColumnSpan="2"/>
+        <CheckBox x:Name="flaming" Content="Płonący" VerticalAlignment="Center" HorizontalAlignment="Center" Checked="flaming_Checked" Unchecked="flaming_Unchecked"/>
+        <CheckBox x:Name="magic" Grid.Column="1" Content="Magiczny" HorizontalAlignment="Center" VerticalAlignment="Center" Checked="magic_Checked" Unchecked="magic_Unchecked"/>
+        <Button x:Name="rollButton" Content="Wykonaj rzut" Margin="10,15,10,15" Grid.Row="1" Grid.ColumnSpan="2" Click="rollButton_Click"/>
         <TextBlock Grid.Row="2" TextWrapping="Wrap" Text="Obrażenia" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
     </Grid>

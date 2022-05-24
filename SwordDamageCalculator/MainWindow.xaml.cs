@@ -20,9 +20,36 @@ namespace SwordDamageCalculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        Random random = new Random();
+        
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void flaming_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void flaming_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void magic_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void magic_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void rollButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
