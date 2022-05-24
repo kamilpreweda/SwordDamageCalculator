@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SwordDamagePrototype;
 
 namespace SwordDamageCalculator
 {
@@ -21,35 +22,56 @@ namespace SwordDamageCalculator
     public partial class MainWindow : Window
     {
         Random random = new Random();
+        SwordDamage swordDamage = new SwordDamage();
         
         public MainWindow()
         {
             InitializeComponent();
+            swordDamage.SetMagic(false);
+            swordDamage.SetFlaming(false);
+            RollDice();
+        }
+
+        public void RollDice()
+        {
+            swordDamage.Roll = random.Next(1, 7) + random.Next(1, 7) + random.Next(1, 7);
+            swordDamage.SetFlaming(flaming.IsChecked.Value);
+            swordDamage.SetMagic(magic.IsChecked.Value);
+            DisplayDamage();
+        }
+
+        public void DisplayDamage()
+        {
+            damage.Text = $"Rzut: {swordDamage.Roll} + punkty obrażeń {swordDamage.Damage} = wynik {swordDamage.Damage + swordDamage.Roll}";
         }
 
         private void flaming_Checked(object sender, RoutedEventArgs e)
         {
-
+            swordDamage.SetFlaming(true);
+            DisplayDamage();
         }
 
         private void flaming_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            swordDamage.SetFlaming(false);
+            DisplayDamage();
         }
 
         private void magic_Checked(object sender, RoutedEventArgs e)
         {
-
+            swordDamage.SetMagic(true);
+            DisplayDamage();
         }
 
         private void magic_Unchecked(object sender, RoutedEventArgs e)
         {
-
+            swordDamage.SetMagic(false);
+            DisplayDamage();
         }
 
         private void rollButton_Click(object sender, RoutedEventArgs e)
         {
-
+            RollDice();
         }
     }
 }

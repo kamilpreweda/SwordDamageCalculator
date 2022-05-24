@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace SwordDamagePrototype
 {
@@ -18,6 +19,7 @@ namespace SwordDamagePrototype
         public void CalculateDamage()
         {
             Damage = (int)(Roll * MagicMultiplier) + BASE_DAMAGE + FlamingDamage;
+            Debug.WriteLine($"Po wykonaniu CalculateDamage: {Damage} (rzut: {Roll})");
         }
 
         public void SetMagic(bool isMagic)
@@ -31,6 +33,7 @@ namespace SwordDamagePrototype
                 MagicMultiplier = 1M;
             }
             CalculateDamage();
+            Debug.WriteLine($"Po wykonaniu SetMagic: {Damage} (rzut: {Roll})");
         }
 
         public void SetFlaming(bool isFlaming)
@@ -40,6 +43,12 @@ namespace SwordDamagePrototype
                 Damage += FLAME_DAMAGE;
                 FlamingDamage = FLAME_DAMAGE;
             }
+            else
+            {
+                FlamingDamage = 0;
+            }
+            CalculateDamage();
+            Debug.WriteLine($"Po wykonaniu SetFlaming: {Damage} (rzut: {Roll})");
         }
     }
 }
