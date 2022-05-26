@@ -42,7 +42,7 @@ namespace SwordDamageCalculator
 
         public void DisplayDamage()
         {
-            damage.Text = $"Rzut: {swordDamage.Roll} + punkty obrażeń {swordDamage.Damage} = wynik {swordDamage.Damage + swordDamage.Roll}";
+            damage.Text = $"Rzut: {swordDamage.Roll} \n* magiczny mnożnik: {swordDamage.GetMagicMultiplier()} \n+ podstawowe obrażenia: {swordDamage.GetBaseDamage()} \n+ obrażenia od ognia: {swordDamage.GetFlamingDamage()} \n= wynik: {swordDamage.Damage}";
         }
 
         private void flaming_Checked(object sender, RoutedEventArgs e)

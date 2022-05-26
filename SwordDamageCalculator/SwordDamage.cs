@@ -13,12 +13,17 @@ namespace SwordDamagePrototype
         public const int FLAME_DAMAGE = 2;
 
         public int Roll;
-        public decimal MagicMultiplier = 1M;
-        public int FlamingDamage = 0;
+        private decimal magicMultiplier = 1M;
+        private int flamingDamage = 0;
         public int Damage;
-        public void CalculateDamage()
+
+        public int GetBaseDamage() { return BASE_DAMAGE; }
+        public decimal GetMagicMultiplier() { return magicMultiplier; }
+        public int GetFlamingDamage() { return flamingDamage; }
+
+        private void CalculateDamage()
         {
-            Damage = (int)(Roll * MagicMultiplier) + BASE_DAMAGE + FlamingDamage;
+            Damage = (int)(Roll * magicMultiplier) + BASE_DAMAGE + flamingDamage;
             Debug.WriteLine($"Po wykonaniu CalculateDamage: {Damage} (rzut: {Roll})");
         }
 
@@ -26,11 +31,11 @@ namespace SwordDamagePrototype
         {
             if (isMagic)
             {
-                MagicMultiplier = 1.75M;
+                magicMultiplier = 1.75M;
             }
             else
             {
-                MagicMultiplier = 1M;
+                magicMultiplier = 1M;
             }
             CalculateDamage();
             Debug.WriteLine($"Po wykonaniu SetMagic: {Damage} (rzut: {Roll})");
@@ -41,11 +46,11 @@ namespace SwordDamagePrototype
             if (isFlaming)
             {
                 Damage += FLAME_DAMAGE;
-                FlamingDamage = FLAME_DAMAGE;
+                flamingDamage = FLAME_DAMAGE;
             }
             else
             {
-                FlamingDamage = 0;
+                flamingDamage = 0;
             }
             CalculateDamage();
             Debug.WriteLine($"Po wykonaniu SetFlaming: {Damage} (rzut: {Roll})");
